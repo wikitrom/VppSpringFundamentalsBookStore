@@ -5,19 +5,17 @@ public class PurchasingServiceImpl implements PurchasingService {
 	private AccountService accountService;
 	private BookService bookService;
 
-	
-	// -- preconditions: inject services
-	
-	public void setAccountService(AccountService accountService) {
-		this.accountService = accountService;
-	}
+	// -- constructors
 
-	public void setBookService(BookService bookService) {
+	// --- spring: inject services in constructor instead of using setters
+	public PurchasingServiceImpl(AccountService accountService, BookService bookService) {
+		super();
+		this.accountService = accountService;
 		this.bookService = bookService;
 	}
 
 	// -- business methods
-	
+
 	public void buyBook(String isbn) {
 		if (bookService != null && accountService != null)
 			accountService.raiseInvoice(bookService.getBookByIsbn(isbn));

@@ -11,12 +11,10 @@
 	</bean>
 
 	<bean id="purchaseService"
-		class="com.virtualpairprogrammers.avalon.services.PurchasingServiceImpl"
-		lazy_init="true"
-		scope="prototype"> <!-- implies a 'Stateful bean' -->
-
-		<property name="bookService" ref="bookService" />
-		<property name="accountService" ref="accountService" />
+		class="com.virtualpairprogrammers.avalon.services.PurchasingServiceImpl">
+		<constructor-arg ref="bookService" />
+		<!-- using index value is needed if the constructor has multiple arguments of the same type -->
+		<constructor-arg index="0" ref="accountService" />
 	</bean>
 
 </beans>
