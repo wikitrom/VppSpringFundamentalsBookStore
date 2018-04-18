@@ -12,7 +12,9 @@
 
 	<bean id="purchaseService"
 		class="com.virtualpairprogrammers.avalon.services.PurchasingServiceImpl"
-		lazy-init="true"> <!-- lazy-init="true" implies defer the creation of the object until needed -->
+		lazy_init="true"
+		scope="prototype"> <!-- implies a 'Stateful bean' -->
+
 		<property name="bookService" ref="bookService" />
 		<property name="accountService" ref="accountService" />
 	</bean>
