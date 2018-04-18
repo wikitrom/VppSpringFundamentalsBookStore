@@ -11,7 +11,8 @@
 	</bean>
 
 	<bean id="purchaseService"
-		class="com.virtualpairprogrammers.avalon.services.PurchasingServiceImpl">
+		class="com.virtualpairprogrammers.avalon.services.PurchasingServiceImpl"
+		lazy-init="true"> <!-- lazy-init="true" implies defer the creation of the object until needed -->
 		<property name="bookService" ref="bookService" />
 		<property name="accountService" ref="accountService" />
 	</bean>
